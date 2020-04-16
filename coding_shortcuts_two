@@ -1,0 +1,168 @@
+
+
+php artisan cache:clear
+
+
+php artisan config:clear
+
+
+
+
+
+php artisan code:models --table=farm_nursery
+To change column data types
+You need to install doctrine/dbal to make this work
+composer require doctrine/dbal
+public function up()
+{
+    Schema::table('sometable', function (Blueprint $table) {
+        $table->text('text')->change();
+    });
+}
+
+
+php artisan cache:clear
+
+php artisan config:clear
+
+
+(when changes are made in .env refresh app
+
+
+php artisan code:models --table=crops
+
+php artisan make:migration create_crops_season_info_table
+
+
+php artisan make:migration add_crop_id_to_crops_season_info_table
+
+
+php artisan make:migration create_vendor_and_buyer_table
+
+
+ 
+   // Route::post('dashboard/fbos', ['uses' => 'FboController@addFBO', 'as'=>'admin.addfbo']); 
+
+      <!-- Hello {{ Auth::guard('admin')->user()->fullname}}, Let's setup your dashboard!  -->
+
+
+
+
+         <!-- @if(Auth::guard('admin')->user()->fullname)
+                                        {{Auth::guard('admin')->user()->fullname }}
+                                        @else
+                                        <script>window.location = "/app/admin/user/login";</script>
+                                      @endif -->
+
+
+http://127.0.0.1:8000/app/admin/login // versus http://127.0.0.1:8000/app/admin/user/login
+composer dump-autoload   // Target class not found
+
+
+
+    <!-- @if(Auth::guard('admin')->user()->fullname)
+                                        {{Auth::guard('admin')->user()->fullname }}
+                                        @else
+                                        <script>window.location = "/app/admin/user/login";</script>
+                                      @endif -->
+
+
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div style="border-radius:10px;" class="card">
+                                    <div style="border-radius:10px;" class="card-header d-flex">
+                                        <h4 class="card-header-title">Step 3</h4>
+                                        
+                                    </div>
+
+                                    <!-- @if(Session::has('message_crop'))
+                                       <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <strong>{{ Session::get('message_crop') }}</strong>  
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </a>
+                                            </div>
+                                         @endif -->
+
+
+                                    <div class="card-body">
+                                    <img style="width:60px; height:auto;display: block; margin-left: auto; margin-right: auto;" alt="Crop calendars" src="{{ url('icons/schedule.png') }}" />
+                                       
+                                       </br>
+                                        <p class="card-text">
+
+                                        {{-- @if($count_c_s > 0) --}}
+
+<h5 style="text-align:center" class="text-muted">NO. OF SEASONAL DATES ADDED</h5>
+
+<!-- <h1 style="text-align:center" class="mb-1">{{--$count_c_s--}}</h1> -->
+{{-- @else --}}
+
+
+Add your ideal planting and harvesting date of your main crop to help track activity timelines. 
+
+
+{{-- @endif --}}
+
+                                    
+                                     
+                                        
+                                        
+                                        </p>
+                                      
+                                    </div>
+
+
+                                    {{-- @if($crop_season_setup)  --}}
+                                        <div style="border-radius:10px; text-align:center" class="card-footer d-flex text-muted">
+                                          <button disabled style="displsy:block; margin-left:auto; margin-right:auto" href="#" class="btn btn-dark" >
+                                            Crop calendar(s) added!
+                                                        </button>
+                                         {{-- @else     --}}
+                                         <div style="border-radius:10px; text-align:center" class="card-footer d-flex text-muted">
+                                    <a href="#" style="displsy:block; margin-left:auto; margin-right:auto" class="btn btn-dark" data-toggle="modal" data-target="#stepthree">
+                                                          Let's add your crop calendars!
+                                                        </a>   
+                                         {{-- @endif --}}
+
+
+                                  
+                                  
+                                  
+                                    </div> 
+
+                                </div>
+                            </div>
+
+
+
+ <div class="table-responsive">
+                                            <table class="table no-wrap p-table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">Season #</th>
+                                                        <th class="border-0">Plant date</th>
+                                                        <th class="border-0">Harvest date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @if(!isset($get_all_seasonal_calendar))
+                                            <tr>
+                                                <td> No Records </td>
+                                            </tr>
+                                            @else
+                                          
+                                                @foreach ($get_all_seasonal_calendar  as $data)  
+                                                <tr>
+                                                      
+                                                    <td> {{$data->season_no}} </td>  
+                                                    <td>{{\Carbon\Carbon::parse($data->ideal_planting_date)->format('jS \o\f F, Y')}}</td>     
+                                                    <td>{{\Carbon\Carbon::parse($data->ideal_harvesting_date)->format('jS \o\f F, Y')}}</td>     
+                                                   
+                                                </tr> 
+                                                @endforeach   
+                                                @endif    
+                                                </tbody>
+                                            </table>
+                                        </div>
